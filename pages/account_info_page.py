@@ -53,3 +53,6 @@ class AccountInfoPage:
 
     def click_continue(self):
         self.driver.find_element(By.CSS_SELECTOR, "[data-qa='continue-button']").click()
+
+    def wait_for_password(self, wait):
+        wait.until(EC.visibility_of_element_located((By.CSS_SELECTOR, "[data-qa='password']")))

@@ -17,6 +17,7 @@ def test_signup_full_flow(driver, wait):
     signup_page.enter_email(email)
     signup_page.click_signup()
     account_info_page = AccountInfoPage(driver)
+    account_info_page.wait_for_password(wait)
     account_info_page.enter_password("Test1234")
     account_info_page.select_day("30") 
     account_info_page.select_month("9")
