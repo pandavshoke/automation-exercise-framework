@@ -15,6 +15,6 @@ jobs:
             - name: Install dependencies
               run: pip install -r requirements.txt
             - name: Run UI tests
-              run: pytest tests/ui --reruns 2
+              run: pytest tests/ui --reruns 2 --html=ui-report.html --self-contained-html
             - name: Run API tests
               run: pytest tests/api

@@ -2,3 +2,4 @@ selenium==4.44.0
 pytest==9.0.3
 requests==2.34.2
 pytest-rerunfailures==16.7
+pytest-html==4.2.0
