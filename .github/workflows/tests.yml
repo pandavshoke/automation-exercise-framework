@@ -16,11 +16,19 @@ jobs:
               run: pip install -r requirements.txt
             - name: Run UI tests
               run: pytest tests/ui --reruns 2 --html=ui-report.html --self-contained-html
-            - name: Upload UI reportп
+            - name: Upload UI report
               uses: actions/upload-artifact@v7
               with:
                 name: ui_test
                 path: ui-report.html
               if: always()
             - name: Run API tests
-              run: pytest tests/api
+              run: pytest tests/api --reruns 2 --html=api-report.html --self-contained-html
+              if: always()
+            - name: Upload API report
+              uses: actions/upload-artifact@v7
+              with:
+                name: api_test
+                path: api-report.html
+              if: always()
+             
