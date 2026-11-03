@@ -8,6 +8,8 @@ def test_add_to_cart(page: Page):
     card.get_by_text("Add to cart").first.click()
     page.get_by_role("link", name="View Cart").click()
     expect(page.get_by_text("Blue Top")).to_be_visible()
+
+    
 def test_add_and_remove_product_from_cart_pw(page: Page):
     page.goto("https://automationexercise.com")
     page.get_by_role("link", name="Products").click()
