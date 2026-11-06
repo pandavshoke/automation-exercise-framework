@@ -1,9 +1,10 @@
 import random
 import re
+import uuid
 from playwright.sync_api import Page
 
 def register_new_account_pw(page: Page):
-        email = f"testuser{random.randint(1000, 9999)}@test.com"
+        email = f"testuser{uuid.uuid4().hex}@test.com"
         names = ["John", "Alice", "Anna", "Mike", "Sarah"]
         name = random.choice(names)
         page.locator("[data-qa='signup-name']").fill(name)
