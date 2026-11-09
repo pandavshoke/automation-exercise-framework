@@ -28,7 +28,6 @@ def add_product_and_go_to_cart_pw(page: Page, product_name: str):
         page.get_by_role("link", name="Products").click()
         card = page.locator(".product-image-wrapper").filter(has_text=product_name)
         card.get_by_text("Add to cart").first.click()
-        page.get_by_role("link", name="View Cart").click()
-
+        page.locator("a[href='/view_cart']").filter(has_text="View Cart").click()
 
         
