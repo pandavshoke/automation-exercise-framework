@@ -1,7 +1,7 @@
 name: tests
 on:
     push:
-        branches: [main]
+        branches: [main, playwright-migration]
 jobs:
     test:
         runs-on: ubuntu-latest
@@ -30,5 +30,19 @@ jobs:
               with:
                 name: api_test
                 path: api-report.html
+              if: always()
+            - name: Install Chromium
+              run: playwright install --with-deps chromium
+              if: always()
+            - name: Run Playwright tests
+              run: pytest tests/playwright_ui --reruns 2 --html=playwright-report.html --self-contained-html --screenshot only-on-failure --tracing retain-on-failure
+              if: always()
+            - name: Upload Playwright report
+              uses: actions/upload-artifact@v7
+              with:
+                name: playwright_test
+                path: |
+                  playwright-report.html
+                  test-results/
               if: always()
              
