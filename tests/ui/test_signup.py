@@ -1,5 +1,6 @@
 import pytest
 import random
+import uuid
 from selenium.webdriver.common.by import By
 from pages.home_page import HomePage
 from pages.signup_page import SignupPage
@@ -10,7 +11,7 @@ def test_signup_full_flow(driver, wait):
     home_page = HomePage(driver)
     home_page.click_signup_login()
     signup_page = SignupPage(driver)
-    email = f"testuser{random.randint(1000, 9999)}@test.com"
+    email = f"testuser{uuid.uuid4().hex}@test.com"
     names = ["John", "Alice", "Anna", "Mike", "Sarah"]
     name = random.choice(names)
     signup_page.enter_name(name)
